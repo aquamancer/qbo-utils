@@ -1,0 +1,8 @@
+{
+  "rootDirName": "Input-files",
+
+  "absolutePath": "/home/aqua/IdeaProjects/Ahntech/applications/invoice-matcher/src/main/media/Accounts Receivable",
+  "bankDepositDir": "bank-deposits",
+  "myInvoiceDir": "myinvoice",
+  "invoicesUnpaidDir": "invoices-unpaid"
+}
