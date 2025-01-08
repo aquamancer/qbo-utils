@@ -1,0 +1,32 @@
+FUNCTIONALITY
+
+1. input: bill emails
+or  - selenium outlook tab
+or  - batch read a folder of pdfs
+or  - drag and drop pdf into a gui(?)
+or  - batch read .eml file downloaded from quickbooks individually
+    - potential problem: multiple bills in one email?
+
+2. parse input into Bill object subclass
+and - verify bill type
+    and - company logo image
+        and - extract images from page, have user select which image that, if present, identifies the bill type
+        and - have preexisting media folder with picture identifiers
+    and - company name text
+    and - all identifiers loaded in config file (json?)
+        and - {"billName": "", "identifiers": {"image": [either "filePath" or {"filePath": "weight": "and/super"}, ], "text": []}}
+    and - identifiers
+            - super: true if this condition is true
+            - and: all and's must be fufilled to be true
+    opt - users can add bill types and their identifiers
+        and - would need all identifiers to be in a dynamic config file, even default ones. only 1 bill class
+
+4. parse information from bill
+5. automatically inputs bill into quickbooks
+
+WORKS WITH
+    - fuels bills
+    - regular bills
+
+
+need .gitignore but for certain customers, like the one with split fuels

@@ -1,0 +1,66 @@
+{
+  "employeeName": {
+    "quickbooks": {
+      "name": "Name ("
+    },
+    "spreadsheet": {
+      "name": "Name"
+    }
+  },
+  "regularPay": {
+    "quickbooks": {
+      "name": "Regular pay"
+    },
+    "spreadsheet": {
+      "name": "Regular"
+    }
+  },
+  "fringeHW": {
+    "quickbooks": {
+      "name": "Fringe h&w"
+    },
+    "spreadsheet": {
+      "name": "H&W"
+    }
+  },
+  "overtime": {
+    "quickbooks": {
+      "name": "Overtime"
+    },
+    "spreadsheet": {
+      "name": "OVT"
+    }
+  },
+  "sickPay": {
+    "quickbooks": {
+      "name": "Sick pay"
+    },
+    "spreadsheet": {
+      "name": "SICK"
+    }
+  },
+  "vacationPay": {
+    "quickbooks": {
+      "name": "Vacation pay"
+    },
+    "spreadsheet": {
+      "name": "Vacation Pay"
+    }
+  },
+  "holidayPay": {
+    "quickbooks": {
+      "name": "Holiday pay"
+    },
+    "spreadsheet": {
+      "name": "Holiday Pay"
+    }
+  },
+  "totalHours": {
+    "quickbooks": {
+      "name": "Total hrs"
+    },
+    "spreadsheet": {
+      "name": "Total hours"
+    }
+  }
+}

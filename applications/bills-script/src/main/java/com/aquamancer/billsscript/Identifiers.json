@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Petroleum Traders",
+        "identifiers": {
+            "image": [
+                {
+                    "path": "stock/identifiers/petroleum_traders1.png",
+                    "logic": "and"
+                }
+            ],
+            "text": [
+                {
+                    "text": "PETROLEUM",
+                    "logic": "and"
+                }
+            ]
+        },
+        "expectedDimension": [8.5, 11],
+        "searchRectangles": {
+            "invoiceNumber": {
+                "x": [4.09, 4.78],
+                "y": [1.44, 1.57]
+            },
+            "invoiceDate": {
+                "x": [0.3, 1.07],
+                "y": [1.39, 1.57]
+            }
+        }
+    }
+]

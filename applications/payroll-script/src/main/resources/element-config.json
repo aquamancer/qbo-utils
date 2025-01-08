@@ -1,0 +1,14 @@
+{
+  "dashboard": {
+    "url": "https://qbo.intuit.com/app/payroll?locale=en-us",
+    "waitForElements": [
+      {"by": "CLASSNAME", "value": "qbo-navigation-widgets-ui"}
+    ]
+  },
+  "payroll": {
+    "url": "https://qbo.intuit.com/app/runpayroll",
+    "waitForElements": [
+      
+    ]
+  }
+}
