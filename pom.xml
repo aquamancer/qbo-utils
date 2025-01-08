@@ -15,8 +15,6 @@
         <module>libs/qbo</module>
         <module>applications/bills-script</module>
         <module>libs/currency</module>
-        <!-- <module>applications/invoice-matcher-archived</module> -->
-        <module>applications/webdriver-test/webdriver-test1</module>
         <module>applications/invoice-matcher</module>
     </modules>
     
