@@ -4,7 +4,6 @@ target/
 !**/src/test/**/target/
 
 ### custom ###
-applications/payroll-script/src/main/resources/payroll-script-preferences.json
 applications/cole-papers/src/main/resources/Paste.txt
 applications/invoice-matcher/src/main/media
 applications/bills-script/src/main/java/com/aquamancer/billsscript/parsers/PetroleumTradersPaste.txt
