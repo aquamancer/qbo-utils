@@ -11,6 +11,7 @@
     </parent>
 
     <artifactId>invoice-matcher</artifactId>
+    <version>1.0.0</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
