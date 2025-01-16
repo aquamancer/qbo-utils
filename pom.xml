@@ -16,6 +16,7 @@
         <module>applications/bills-script</module>
         <module>libs/currency</module>
         <module>applications/invoice-matcher</module>
+        <module>applications/w2-uploader</module>
     </modules>
     
     <dependencies>

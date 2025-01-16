@@ -7,6 +7,7 @@ target/
 applications/cole-papers/src/main/resources/Paste.txt
 applications/invoice-matcher/src/main/media
 applications/bills-script/src/main/java/com/aquamancer/billsscript/parsers/PetroleumTradersPaste.txt
+applications/w2-uploader/src/test/java/w2example.pdf
 ### IntelliJ IDEA ###
 .idea/
 .idea/modules.xml

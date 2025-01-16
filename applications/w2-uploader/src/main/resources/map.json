@@ -1,0 +1,147 @@
+{
+  "b": {
+    "name": "employer's identification number",
+    "x": [1.94, 4.35],
+    "y": [0.36, 0.56]
+  },
+  "c1": {
+    "name": "employer's name, address, and ZIP code: line 1",
+    "x": [0.36, 4.30],
+    "y": [0.62, 0.8]
+  },
+  "c2": {
+    "name": "employer's name, address, and ZIP code: line 2",
+    "x": [0.36, 4.3],
+    "y": [0.88, 1.05]
+  },
+  "c3": {
+    "name": "employer's name, address, and ZIP code: line 3",
+    "x": [0.36, 4.3],
+    "y": [1.14, 1.25]
+  },
+  "e": {
+    "name": "employee's first name and initial",
+    "x": [0.36, 4.3],
+    "y": [1.56, 1.69]
+  },
+  "f1": {
+    "name": "employee's address and ZIP code: line 1",
+    "x": [0.36, 4.3],
+    "y": [1.71, 1.84]
+  },
+  "f2": {
+    "name": "employee's address and ZIP code: line 2",
+    "x": [0.36, 4.3],
+    "y": [1.86, 1.99]
+  },
+  "f3": {
+    "name": "employee's address and ZIP code: line 3",
+    "x": [0.36, 4.3],
+    "y": [2, 2.12]
+  },
+  "1": {
+    "name": "wages, tips, and other compensation",
+    "x": [5.61, 6.85],
+    "y": [0.46, 0.6]
+  },
+  "3": {
+    "name": "social security wages",
+    "x": [5.61, 6.85],
+    "y": [0.7, 0.84]
+  },
+  "5": {
+    "name": "medicare wages and tips",
+    "x": [5.61, 6.85],
+    "y": [0.92, 1.06]
+  },
+  "7": {
+    "name": "social security tips",
+    "x": [5.61, 6.85],
+    "y": [1.13, 1.27]
+  },
+  "11": {
+    "name": "nonqualified plans",
+    "x": [5.61, 6.85],
+    "y": [1.58, 1.75]
+  },
+  "2": {
+    "name": "federal income tax withheld",
+    "x": [6.90, 8.07],
+    "y": [0.46, 0.6]
+  },
+  "4": {
+    "name": "social security tax withheld",
+    "x": [6.90, 8.07],
+    "y": [0.7, 0.84]
+  },
+  "6": {
+    "name": "medicare tax withheld",
+    "x": [6.90, 8.07],
+    "y": [0.92, 1.06]
+  },
+  "8": {
+    "name": "allocated tips",
+    "x": [6.90, 8.07],
+    "y": [1.13, 1.27]
+  },
+  "14a": {
+    "name": "other category",
+    "x": [5.61, 6.85],
+    "y": [1.86, 1.97]
+  },
+  "14b": {
+    "name": "other amount",
+    "x": [6.90, 8.07],
+    "y": [1.86, 1.97]
+  },
+  "12ai": {
+    "name": "12a letter",
+    "x": [4.38, 4.52],
+    "y": [0.47, 0.61]
+  },
+  "12aii": {
+    "name": "12a amount",
+    "x": [4.66, 5.57],
+    "y": [0.48, 0.62]
+  },
+  "12bi": {
+    "name": "12b letter",
+    "x": [4.38, 4.52],
+    "y": [0.71, 0.85]
+  },
+  "12bii": {
+    "name": "12b amount",
+    "x": [4.66, 5.57],
+    "y": [0.93, 1.07]
+  },
+  "a": {
+    "name": "employee social security number",
+    "x": [4.37, 5.57],
+    "y": [2.17, 2.34]
+  },
+  "15ai": {
+    "name": "state, row 1",
+    "x": [0.43, 0.71],
+    "y": [2.39, 2.55]
+  },
+  "15aii": {
+    "name": "employer state ID no: row 1",
+    "x": [0.74, 1.76],
+    "y": [2.39, 2.55]
+  },
+  "16a": {
+    "name": "state wages, tips, etc: row 1",
+    "x": [1.79, 2.84],
+    "y": [2.39, 2.55]
+  },
+  "17a": {
+    "name": "state income tax: row 1",
+    "x": [2.88, 4.35],
+    "y": [2.39, 2.55]
+  },
+  "18a": {
+    "name": "local wages, tips, etc., row 1",
+    "x": [4.39, 5.58],
+    "y": [2.39, 2.55]
+  }
+}
