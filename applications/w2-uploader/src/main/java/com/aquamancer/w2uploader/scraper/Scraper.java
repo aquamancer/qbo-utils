@@ -14,7 +14,7 @@ import java.util.*;
 
 public class Scraper {
     // conversion 1 inch = 72 points
-    private int IN_TO_PT = 72;
+    private final int IN_TO_PT = 72;
     private JsonObject map;
     public PDFTextStripperByArea stripper;
 

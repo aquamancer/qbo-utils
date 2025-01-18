@@ -17,12 +17,11 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //todo remove the \n after each extract
-        // todo use box b's contents to verify they are correct.
         // jarPath used to output file there
         String jarPath;
         try {
@@ -44,12 +43,13 @@ public class Main {
         }
     }
     private static PDDocument promptPdf() {
-        try (Scanner input = new Scanner(System.in)) {
+        try {
+            Scanner input = new Scanner(System.in);
             System.out.print("Enter path of w2 pdf: ");
             String filePath = input.nextLine();
             return Loader.loadPDF(new File(filePath));
-        } catch (IOException ex) {
-            throw new RuntimeException("Could not load w2 pdf.");
+        } catch (IOException e) {
+            throw new RuntimeException("Could not load pdf.");
         }
     }
 }
