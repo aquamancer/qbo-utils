@@ -9,9 +9,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 
 import java.awt.geom.Rectangle2D;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 public class Scraper {
@@ -23,12 +21,13 @@ public class Scraper {
     public Scraper(){
         try {
             // load json file containing the coordinates to scrape values from
-            this.map = JsonParser.parseReader(new FileReader("applications/w2-uploader/src/main/resources/map.json")).getAsJsonObject();
+            this.map = JsonParser.parseReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("map.json"))).getAsJsonObject();
             // initialize the PDFTextStripperByArea and set its regions based on the json file.
             this.stripper = new PDFTextStripperByArea();
             this.loadRegionsIntoStripper(this.map, this.stripper);
         } catch (IOException ex) {
-            throw new RuntimeException("Could not locate file.");
+            ex.printStackTrace();
+            throw new RuntimeException("Could not load map.json");
         }
     }
     private void loadRegionsIntoStripper(JsonObject map, PDFTextStripperByArea stripper) {
