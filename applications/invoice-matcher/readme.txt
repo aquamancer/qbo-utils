@@ -2,7 +2,7 @@ Requirements:
 preferences.json in .jar directory
 
 preferences.json:
-bankDepositDescriptionFilter: String[] = bank deposits description to include. Follows OR logic
+bankDepositDescriptionFilter: String[] = bank deposits description to include. Follows OR logic. case-sensitive
 
 File Structure:
 absolutePath
