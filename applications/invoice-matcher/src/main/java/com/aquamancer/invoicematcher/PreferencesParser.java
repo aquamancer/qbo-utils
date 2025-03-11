@@ -31,13 +31,16 @@ public class PreferencesParser {
             this.fragmentsDir = preferences.get("myInvoiceDir").getAsString();
             this.invoicesUnpaidDir = preferences.get("invoicesUnpaidDir").getAsString();
             this.rootDirPath = this.absolutePath + '/' + this.rootDirName + '/';
-            preferences.getAsJsonArray("bankDepositDescriptionFilter")
-                    .forEach(element -> {
-                        if (element.isJsonPrimitive() && element.getAsString() != null) {
-                            this.bankDepositDescriptionFilter.add(element.getAsString());
-                        }
-                    });
-
+            if (preferences.get("bankDepositDescriptionFilter") != null && preferences.get("bankDepositDescriptionFilter").isJsonArray()) {
+                preferences.getAsJsonArray("bankDepositDescriptionFilter")
+                        .forEach(element -> {
+                            if (element.isJsonPrimitive() && element.getAsString() != null) {
+                                this.bankDepositDescriptionFilter.add(element.getAsString());
+                            }
+                        });
+            } else {
+                throw new RuntimeException("there is no bankDepositDescriptionFilter array in preferences.json. refer to readme.txt for json structure.");
+            }
         } catch (IOException ex) {
             throw new RuntimeException("Could not find or parse preferences.json. Verify preferences.json is in same directory as .jar");
         }
