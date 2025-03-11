@@ -28,7 +28,7 @@ public class Main {
             throw new RuntimeException("Could not parse file path of .jar file.");
         }
         // Load import and export file paths
-        FilePathParser filePaths = new FilePathParser(jarPath);
+        PreferencesParser preferences = new PreferencesParser(jarPath);
 
         // Load bank deposits --
         // Specify header mappings.
@@ -37,9 +37,9 @@ public class Main {
                 .setHeader("Date", "DESCRIPTION", "Payee", "Categorize or match", "SPENT", "RECEIVED")
                 .build();
         // Create filter for bank deposits. Excludes row if false.
-        Predicate<CSVRecord> bankDepositFilter = record -> !record.get(Headers.BANK.get("receivedAmount")).isEmpty() && record.get(Headers.BANK.get("description")).equals("Treas Dod Misc");
+        Predicate<CSVRecord> bankDepositFilter = record -> !record.get(Headers.BANK.get("receivedAmount")).isEmpty() && preferences.getBankDepositDescriptionFilter().contains(record.get(Headers.BANK.get("description")));
         // Create list of file paths to Qbo bank deposit exports.
-        List<String> bankDepositFilePaths = filePaths.getAllBankDepositFileNames();
+        List<String> bankDepositFilePaths = preferences.getAllBankDepositFileNames();
         // Merge all bank deposits throughout the files that satisfy the filter.
         List<CSVRecord> bankDeposits = CsvMerger.merge(bankDepositFilePaths, bankDepositFilter, bankDepositFormat);
 
@@ -54,16 +54,16 @@ public class Main {
                 && !record.get(Headers.FRAGMENT.get("eftAmount")).equals("0")
                 && !record.get(Headers.FRAGMENT.get("eftAmount")).isBlank();
         // Create a list of file paths to csv to be merged
-        List<String> fragmentFilePaths = filePaths.getAllFragmentFilePaths();
+        List<String> fragmentFilePaths = preferences.getAllFragmentFilePaths();
         // Merge the files.
         List<CSVRecord> fragmentList = CsvMerger.merge(fragmentFilePaths, fragmentFilter, fragmentFormat);
 
         // Load invoices unpaid
-        String invoicesUnpaidPath = filePaths.getInvoicesUnpaidFileName();
+        String invoicesUnpaidPath = preferences.getInvoicesUnpaidFileName();
         Map<String, List<CSVRecord>> invoicesUnpaid = loadInvoicesUnpaid(invoicesUnpaidPath);
 
         // Initialize Payment and Deposit spreadsheet writers
-        Uploader uploader = createUploader(filePaths.getPaymentExportFilePath(), filePaths.getDepositExportFilePath(), invoicesUnpaid);
+        Uploader uploader = createUploader(preferences.getPaymentExportFilePath(), preferences.getDepositExportFilePath(), invoicesUnpaid);
 
         // Match bank deposit lump sums with fragmented payments in myInvoice.csv
         List<Match> matches = new ArrayList<>();
@@ -75,7 +75,7 @@ public class Main {
             }
         }
         uploader.export();
-        writeSummary(filePaths.getSummaryExportFilePath(), matches, fragmentFilePaths, bankDepositFilePaths, invoicesUnpaidPath);
+        writeSummary(preferences.getSummaryExportFilePath(), matches, fragmentFilePaths, bankDepositFilePaths, invoicesUnpaidPath);
     }
     // begin and end dates for every file
     private static Map<String, List<CSVRecord>> loadInvoicesUnpaid(String filePath) {

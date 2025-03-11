@@ -4,5 +4,11 @@
   "absolutePath": "absolute/path/to/folder/containing/the/folders/below",
   "bankDepositDir": "bank-deposits",
   "myInvoiceDir": "myinvoice",
-  "invoicesUnpaidDir": "invoices-unpaid"
+  "invoicesUnpaidDir": "invoices-unpaid",
+
+  "bankDepositDescriptionFilter": [
+    "filter1",
+    "OR filter2",
+    "OR filter3"
+  ]
 }

@@ -2,6 +2,8 @@ Requirements:
 preferences.json in .jar directory
 
 preferences.json:
+bankDepositDescriptionFilter: String[] = bank deposits description to include. Follows OR logic
+
 File Structure:
 absolutePath
     rootDirName
@@ -17,3 +19,19 @@ absolutePath
         summary.log
         paymentsuploader.csv
         depositsuploader.csv
+
+Example preferences.json:
+{
+  "rootDirName": "Input-files",
+
+  "absolutePath": "absolute/path/to/folder/containing/the/folders/below",
+  "bankDepositDir": "bank-deposits",
+  "myInvoiceDir": "myinvoice",
+  "invoicesUnpaidDir": "invoices-unpaid",
+
+  "bankDepositDescriptionFilter": [
+    "filter1",
+    "OR filter2",
+    "OR filter3"
+  ]
+}
