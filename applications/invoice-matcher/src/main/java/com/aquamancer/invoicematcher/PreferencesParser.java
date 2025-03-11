@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 public class PreferencesParser {
-    private static final Set<String> CSV_EXTENSION_FILTER = new HashSet<>(List.of(".csv"));
+    private static final Set<String> CSV_EXTENSION_FILTER = new HashSet<>(List.of(".csv", ".txt"));
     private String jarPath;
     private String rootDirName;
     private String absolutePath, bankDepositDir, fragmentsDir, invoicesUnpaidDir;
