@@ -6,7 +6,7 @@
   "myInvoiceDir": "myinvoice",
   "invoicesUnpaidDir": "invoices-unpaid",
 
-  "bankDepositDescriptionFilter": [
+  "bankDepositDescriptionFilterRegex": [
     "filter1",
     "OR filter2",
     "OR filter3"

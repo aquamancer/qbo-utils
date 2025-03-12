@@ -1,7 +1,6 @@
 package com.aquamancer.invoicematcher;
 
 import com.aquamancer.invoicematcher.uploader.UploaderEntry;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -19,7 +18,8 @@ public class PreferencesParser {
     private String rootDirName;
     private String absolutePath, bankDepositDir, fragmentsDir, invoicesUnpaidDir;
     private String rootDirPath;
-    private Set<String> bankDepositDescriptionFilter = new HashSet<>();
+
+    private List<String> bankDepositDescriptionFilterRegex = new ArrayList<>();
 
     public PreferencesParser(String jarPath) {
         this.jarPath = jarPath;
@@ -31,15 +31,15 @@ public class PreferencesParser {
             this.fragmentsDir = preferences.get("myInvoiceDir").getAsString();
             this.invoicesUnpaidDir = preferences.get("invoicesUnpaidDir").getAsString();
             this.rootDirPath = this.absolutePath + '/' + this.rootDirName + '/';
-            if (preferences.get("bankDepositDescriptionFilter") != null && preferences.get("bankDepositDescriptionFilter").isJsonArray()) {
-                preferences.getAsJsonArray("bankDepositDescriptionFilter")
+            if (preferences.get("bankDepositDescriptionFilterRegex") != null && preferences.get("bankDepositDescriptionFilterRegex").isJsonArray()) {
+                preferences.getAsJsonArray("bankDepositDescriptionFilterRegex")
                         .forEach(element -> {
                             if (element.isJsonPrimitive() && element.getAsString() != null) {
-                                this.bankDepositDescriptionFilter.add(element.getAsString());
+                                this.bankDepositDescriptionFilterRegex.add(element.getAsString());
                             }
                         });
             } else {
-                throw new RuntimeException("there is no bankDepositDescriptionFilter array in preferences.json. refer to readme.txt for json structure.");
+                throw new RuntimeException("there is no bankDepositDescriptionFilterRegex array in preferences.json. refer to readme.txt for json structure.");
             }
         } catch (IOException ex) {
             throw new RuntimeException("Could not find or parse preferences.json. Verify preferences.json is in same directory as .jar");
@@ -92,7 +92,7 @@ public class PreferencesParser {
     public String getSummaryExportFilePath() {
         return this.rootDirPath + "/summary" + dateAppend() + ".log";
     }
-    public Set<String> getBankDepositDescriptionFilter() {
-        return this.bankDepositDescriptionFilter;
+    public List<String> getBankDepositDescriptionFilter() {
+        return this.bankDepositDescriptionFilterRegex;
     }
 }

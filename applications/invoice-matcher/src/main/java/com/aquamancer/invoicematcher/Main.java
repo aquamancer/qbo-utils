@@ -37,7 +37,7 @@ public class Main {
                 .setHeader("Date", "DESCRIPTION", "Payee", "Categorize or match", "SPENT", "RECEIVED")
                 .build();
         // Create filter for bank deposits. Excludes row if false.
-        Predicate<CSVRecord> bankDepositFilter = record -> !record.get(Headers.BANK.get("receivedAmount")).isEmpty() && preferences.getBankDepositDescriptionFilter().contains(record.get(Headers.BANK.get("description")));
+        Predicate<CSVRecord> bankDepositFilter = record -> !record.get(Headers.BANK.get("receivedAmount")).isEmpty() && preferences.getBankDepositDescriptionFilter().stream().anyMatch(regex -> record.get(Headers.BANK.get("description")).matches(regex));
         // Create list of file paths to Qbo bank deposit exports.
         List<String> bankDepositFilePaths = preferences.getAllBankDepositFileNames();
         // Merge all bank deposits throughout the files that satisfy the filter.

@@ -2,7 +2,7 @@ Requirements:
 preferences.json in .jar directory
 
 preferences.json:
-bankDepositDescriptionFilter: String[] = bank deposits description to include. Follows OR logic. case-sensitive
+bankDepositDescriptionFilterRegex: String[] = regexes of bank deposit description to include
 
 File Structure:
 absolutePath
@@ -29,9 +29,9 @@ Example preferences.json:
   "myInvoiceDir": "myinvoice",
   "invoicesUnpaidDir": "invoices-unpaid",
 
-  "bankDepositDescriptionFilter": [
-    "filter1",
-    "OR filter2",
-    "OR filter3"
+  "bankDepositDescriptionFilterRegex": [
+    "regex1",
+    "ORregex2",
+    "ORregex3"
   ]
 }
