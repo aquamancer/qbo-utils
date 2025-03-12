@@ -89,6 +89,13 @@ public class PreferencesParser {
     public String getDepositExportFilePath() {
         return this.rootDirPath + "/depositsuploader" + dateAppend() + ".csv";
     }
+    public String getPaymentErrorExportFilePath() {
+        return this.rootDirPath + "/payments-errors" + dateAppend() + ".csv";
+    }
+    public String getDepositErrorExportFilePath() {
+        return this.rootDirPath + "/deposits-errors" + dateAppend() + ".csv";
+    }
+
     public String getSummaryExportFilePath() {
         return this.rootDirPath + "/summary" + dateAppend() + ".log";
     }

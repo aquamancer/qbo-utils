@@ -23,6 +23,7 @@ public class UploaderEntry {
     private String Customer, PrivateNote, InvoiceApplyTo, LineAmount;
     private StringBuilder PaymentRefNumberPayments;
     private String PaymentRefNumberDeposits; // eft trace
+    private boolean hasError = false;
 
     // Payments constants
     private static final String DEPOSIT_TO_ACCOUNT_PAYMENTS = "Undeposited Funds";
@@ -70,6 +71,7 @@ public class UploaderEntry {
         this.LineAmount = fragment.getEftAmount().toString();
         if (fragment.getEftTraceNumber().isEmpty()) {
             this.PaymentRefNumberDeposits = ERROR_INDICATOR + "Eft trace number does not exist!";
+            this.hasError = true;
         } else {
             this.PaymentRefNumberDeposits = fragment.getEftTraceNumber();
         }
@@ -86,6 +88,7 @@ public class UploaderEntry {
         } catch (DateTimeParseException ex) {
             this.TxnDate = null;
             this.TxnDatePrint = ERROR_INDICATOR + "Could not parse invoice date from fragment";
+            this.hasError = true;
         }
     }
     private void updateCustomer(String invoiceNumber, Map<String, List<CSVRecord>> invoicesUnpaid) {
@@ -101,6 +104,7 @@ public class UploaderEntry {
             } else {
                 LOGGER.error("Could not find invoice number: {} in invoices unpaid.", invoiceNumber);
                 this.Customer = ERROR_INDICATOR + "Invoice number does not exist in invoices unpaid";
+                this.hasError = true;
             }
         }
     }
@@ -110,6 +114,7 @@ public class UploaderEntry {
         String eftTraceNumber = fragment.getEftTraceNumber();
         if (this.TxnDate == null || eftTraceNumber.isEmpty()) {
             this.PaymentRefNumberPayments = new StringBuilder(ERROR_INDICATOR + "TxnDate or PrivateNote(eftTraceNo) is null");
+            this.hasError = true;
         } else {
             this.PaymentRefNumberPayments = new StringBuilder();
             PaymentRefNumberPayments.append(TxnDate.getYear())
@@ -190,6 +195,10 @@ public class UploaderEntry {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public boolean hasError() {
+        return this.hasError;
     }
 
     public static void main(String[] args) {

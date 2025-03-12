@@ -49,13 +49,15 @@ public class Uploader {
 
     private static final String BLANK_LINE = "";
 
-    private Appendable paymentsWriter, depositsWriter;
+    private Appendable paymentsWriter, depositsWriter, paymentsErrorWriter, depositsErrorWriter;
     // todo this is a bandaid fix for fragment mutability (as high level change as possible)
     private List<List<Fragment>> matchedFragments;
     private Map<String, List<CSVRecord>> invoicesUnpaid;
-    public Uploader(Appendable paymentsWriter, Appendable depositsWriter, Map<String, List<CSVRecord>> invoicesUnpaid) {
+    public Uploader(Appendable paymentsWriter, Appendable depositsWriter, Appendable paymentsErrorWriter, Appendable depositsErrorWriter, Map<String, List<CSVRecord>> invoicesUnpaid) {
         this.paymentsWriter = paymentsWriter;
         this.depositsWriter = depositsWriter;
+        this.paymentsErrorWriter = paymentsErrorWriter;
+        this.depositsErrorWriter = depositsErrorWriter;
         this.invoicesUnpaid = invoicesUnpaid;
         matchedFragments = new ArrayList<>();
     }
@@ -154,16 +156,31 @@ public class Uploader {
         try (
                 CSVPrinter paymentsPrinter = new CSVPrinter(paymentsWriter, PAYMENTS_FORMAT);
                 CSVPrinter depositsPrinter = new CSVPrinter(depositsWriter, DEPOSITS_FORMAT);
+                CSVPrinter paymentsErrorPrinter = new CSVPrinter(paymentsErrorWriter, PAYMENTS_FORMAT);
+                CSVPrinter depositsErrorPrinter = new CSVPrinter(depositsErrorWriter, DEPOSITS_FORMAT);
         ) {
             int paymentRefNumber = 0;
             int depositRefNumber = 0;
             for (List<Fragment> matchedFragmentGroup : matchedFragments) {
                 mergeFragmentsWithSameInvoiceNumber(matchedFragmentGroup);
                 handleNegativeAdjustmentsByEftTrace(matchedFragmentGroup);
+                List<UploaderEntry> uploaderEntryGroup = new ArrayList<>();
+                boolean groupHasError = false;
                 for (Fragment fragment : matchedFragmentGroup) {
                     UploaderEntry uploaderEntry = new UploaderEntry(fragment, paymentRefNumber, depositRefNumber, invoicesUnpaid);
-                    uploaderEntry.printPaymentRecord(paymentsPrinter);
-                    uploaderEntry.printDepositRecord(depositsPrinter);
+                    if (uploaderEntry.hasError()) {
+                        groupHasError = true;
+                    }
+                    uploaderEntryGroup.add(uploaderEntry);
+                }
+                for (UploaderEntry uploaderEntry : uploaderEntryGroup) {
+                    if (groupHasError) {
+                        uploaderEntry.printPaymentRecord(paymentsErrorPrinter);
+                        uploaderEntry.printDepositRecord(depositsErrorPrinter);
+                    } else {
+                        uploaderEntry.printPaymentRecord(paymentsPrinter);
+                        uploaderEntry.printDepositRecord(depositsPrinter);
+                    }
                     paymentRefNumber++;
                 }
                 depositRefNumber++;

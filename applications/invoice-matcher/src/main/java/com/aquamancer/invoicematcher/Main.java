@@ -63,7 +63,13 @@ public class Main {
         Map<String, List<CSVRecord>> invoicesUnpaid = loadInvoicesUnpaid(invoicesUnpaidPath);
 
         // Initialize Payment and Deposit spreadsheet writers
-        Uploader uploader = createUploader(preferences.getPaymentExportFilePath(), preferences.getDepositExportFilePath(), invoicesUnpaid);
+        Uploader uploader = createUploader(
+                preferences.getPaymentExportFilePath(),
+                preferences.getDepositExportFilePath(),
+                preferences.getPaymentErrorExportFilePath(),
+                preferences.getDepositErrorExportFilePath(),
+                invoicesUnpaid
+        );
 
         // Match bank deposit lump sums with fragmented payments in myInvoice.csv
         List<Match> matches = new ArrayList<>();
@@ -85,12 +91,15 @@ public class Main {
             throw new RuntimeException("Could not load invoices unpaid!");
         }
     }
-    private static Uploader createUploader(String paymentsExportFilePath, String depositsExportFilePath, Map<String, List<CSVRecord>> invoicesUnpaid) {
+    private static Uploader createUploader(String paymentsExportFilePath, String depositsExportFilePath, String paymentsErrorExportFilePath, String depositsErrorExportFilePath, Map<String, List<CSVRecord>> invoicesUnpaid) {
         try {
             // These streams will automatically close after the Printers close.
             FileWriter paymentsWriter = new FileWriter(paymentsExportFilePath);
             FileWriter depositsWriter = new FileWriter(depositsExportFilePath);
-            return new Uploader(paymentsWriter, depositsWriter, invoicesUnpaid);
+            FileWriter paymentsErrorWriter = new FileWriter(paymentsErrorExportFilePath);
+            FileWriter depositsErrorWriter = new FileWriter(depositsErrorExportFilePath);
+
+            return new Uploader(paymentsWriter, depositsWriter, paymentsErrorWriter, depositsErrorWriter, invoicesUnpaid);
         } catch (IOException ex) {
             throw new RuntimeException("Could not create payment uploader!");
         }
