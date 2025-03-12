@@ -23,7 +23,7 @@ public final class CsvMerger {
      * @return A List of CSVRecords (rows), aggregated from all CSV files specified by csvPaths, that satisfy the predicate.
     **/
     public static List<CSVRecord> merge(List<String> filePaths, Predicate<? super CSVRecord> filter, CSVFormat csvFormat) {
-        csvFormat.builder().setSkipHeaderRecord(true);
+        csvFormat = csvFormat.builder().setSkipHeaderRecord(true).build();
         List<CSVRecord> merged = new ArrayList<>();
         FileReader reader;
 
