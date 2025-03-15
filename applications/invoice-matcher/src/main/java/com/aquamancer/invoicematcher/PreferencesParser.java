@@ -39,7 +39,7 @@ public class PreferencesParser {
                             }
                         });
             } else {
-                throw new RuntimeException("there is no bankDepositDescriptionFilterRegex array in preferences.json. refer to readme.txt for json structure.");
+                throw new RuntimeException("there is no bankDepositDescriptionFilterRegex array in preferences.json. refer to README.md for json structure.");
             }
         } catch (IOException ex) {
             throw new RuntimeException("Could not find or parse preferences.json. Verify preferences.json is in same directory as .jar");

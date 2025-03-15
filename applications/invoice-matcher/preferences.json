@@ -1,7 +1,7 @@
 {
   "rootDirName": "Input-files",
 
-  "absolutePath": "absolute/path/to/folder/containing/the/folders/below",
+  "absolutePath": "absolute/path/to/directory/containing/rootDirName",
   "bankDepositDir": "bank-deposits",
   "myInvoiceDir": "myinvoice",
   "invoicesUnpaidDir": "invoices-unpaid",
