@@ -1,6 +1,6 @@
 # Invoice Matcher for Procurement Integrated Enterprise Environment (PIEE) Wide Area Workflow (WAWF) 
 ## Overview
-Automatically matches payments from WAWF .csv to invoices on QuickBooks Online.
+Automatically matches payments from WAWF .csv with invoices on QuickBooks Online.
 ## Requirements
 * preferences.json in .jar directory
 * TPI Uploader (or similar software) for uploading
