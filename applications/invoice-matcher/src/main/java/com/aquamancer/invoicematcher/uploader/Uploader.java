@@ -172,6 +172,7 @@ public class Uploader {
                         groupHasError = true;
                     }
                     uploaderEntryGroup.add(uploaderEntry);
+                    paymentRefNumber++;
                 }
                 for (UploaderEntry uploaderEntry : uploaderEntryGroup) {
                     if (groupHasError) {
@@ -181,7 +182,6 @@ public class Uploader {
                         uploaderEntry.printPaymentRecord(paymentsPrinter);
                         uploaderEntry.printDepositRecord(depositsPrinter);
                     }
-                    paymentRefNumber++;
                 }
                 depositRefNumber++;
             }

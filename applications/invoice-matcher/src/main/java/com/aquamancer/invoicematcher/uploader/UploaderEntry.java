@@ -56,7 +56,7 @@ public class UploaderEntry {
         if (!negativeAdjustments.isEmpty()) {
             this.PrivateNote += "\nCross-invoice adjustments: ";
             for (Map.Entry<String, BigDecimal> adjustment : negativeAdjustments.entrySet()) {
-                this.PrivateNote += "\nInvoice " + adjustment.getKey() + " for " + adjustment.getValue();
+                this.PrivateNote += "Invoice " + adjustment.getKey() + " for " + adjustment.getValue();
             }
         }
 
