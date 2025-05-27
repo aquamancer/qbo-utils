@@ -27,15 +27,12 @@ public class Script {
                 this.tapKey(KeyEvent.VK_TAB);
             //    this.tapKey(KeyEvent.VK_TAB);
                 this.robot.delay(1500);
-                synchronized (this.robot) {
-                    test = this.robot.getPixelColor(500, 500);
-                }
-                if (test.getRed() < 215 && test.getGreen() <215  && test.getBlue() < 215) {
-                    System.out.println("new item detected. press enter after creating the new item(cursor should be on description");
-                    scanIn.nextLine();
-                    System.out.println("resuming in 3 seconds...");
-                    this.robot.delay(3000);
-                }
+//                if (test.getRed() < 215 && test.getGreen() <215  && test.getBlue() < 215) {
+//                    System.out.println("new item detected. press enter after creating the new item(cursor should be on description");
+//                    scanIn.nextLine();
+//                    System.out.println("resuming in 3 seconds...");
+//                    this.robot.delay(3000);
+//                }
                 this.tapKey(KeyEvent.VK_TAB);
                 this.writeString(Integer.toString(this.invoice.getItems().get(i).getQuantity()));
                 this.tapKey(KeyEvent.VK_TAB);
@@ -51,6 +48,8 @@ public class Script {
                     this.writeString("North Dakota Full Maintenance (0001):ND Dunseith St John");
                 }
                 robot.delay(3000);
+                this.tapKey(KeyEvent.VK_TAB);
+                robot.delay(500);
                 this.tapKey(KeyEvent.VK_TAB);
                 robot.delay(500);
                 this.tapKey(KeyEvent.VK_TAB);
