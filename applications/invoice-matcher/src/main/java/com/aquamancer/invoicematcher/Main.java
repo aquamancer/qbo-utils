@@ -34,7 +34,7 @@ public class Main {
         // Specify header mappings.
         CSVFormat bankDepositFormat = CSVFormat.Builder
                 .create()
-                .setHeader("Date", "DESCRIPTION", "Payee", "Categorize or match", "SPENT", "RECEIVED")
+                .setHeader("Date", "Bank Description", "Spent", "received", "From/To", "Match/Categorize")
                 .build();
         // Create filter for bank deposits. Excludes row if false.
         Predicate<CSVRecord> bankDepositFilter = record -> !record.get(Headers.BANK.get("receivedAmount")).isEmpty() && preferences.getBankDepositDescriptionFilter().stream().anyMatch(regex -> record.get(Headers.BANK.get("description")).matches(regex));

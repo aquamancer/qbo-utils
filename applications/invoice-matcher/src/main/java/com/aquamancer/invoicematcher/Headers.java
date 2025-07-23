@@ -11,8 +11,8 @@ public final class Headers {
     );
     public static final Map<String, String> BANK = Map.of(
             "date", "Date",
-            "description", "DESCRIPTION",
-            "receivedAmount", "RECEIVED"
+            "description", "Bank Description",
+            "receivedAmount", "received"
     );
     public static final Map<String, String> INVOICES_UNPAID = Map.of(
             "invoiceDate", "Date",
